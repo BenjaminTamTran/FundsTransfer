@@ -14,6 +14,14 @@
 		F8D572211A6184BD0048637E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8D572201A6184BD0048637E /* Images.xcassets */; };
 		F8D572241A6184BD0048637E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8D572221A6184BD0048637E /* LaunchScreen.xib */; };
 		F8D572301A6184BD0048637E /* FundsTransferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5722F1A6184BD0048637E /* FundsTransferTests.swift */; };
+		F8D5724F1A618D630048637E /* HTTPRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5724B1A618D620048637E /* HTTPRequestSerializer.swift */; };
+		F8D572501A618D630048637E /* HTTPResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5724C1A618D620048637E /* HTTPResponseSerializer.swift */; };
+		F8D572511A618D630048637E /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5724D1A618D620048637E /* HTTPTask.swift */; };
+		F8D572521A618D630048637E /* HTTPUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5724E1A618D630048637E /* HTTPUpload.swift */; };
+		F8D572551A618E340048637E /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D572541A618E340048637E /* Utility.swift */; };
+		F8D572571A618E6E0048637E /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D572561A618E6E0048637E /* Localize.swift */; };
+		F8D572591A618F2E0048637E /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D572581A618F2E0048637E /* NetworkAdapter.swift */; };
+		F8D5725C1A6194220048637E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D5725B1A6194220048637E /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +31,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = F8D572101A6184BD0048637E;
 			remoteInfo = FundsTransfer;
+		};
+		F8D572401A618CC20048637E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
+			remoteInfo = SwiftHTTP;
+		};
+		F8D572421A618CC20048637E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
+			remoteInfo = SwiftHTTPTests;
+		};
+		F8D572441A618CC20048637E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958025919E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSX;
+		};
+		F8D572461A618CC20048637E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958026319E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSXTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -38,6 +74,15 @@
 		F8D572291A6184BD0048637E /* FundsTransferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FundsTransferTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D5722E1A6184BD0048637E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8D5722F1A6184BD0048637E /* FundsTransferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundsTransferTests.swift; sourceTree = "<group>"; };
+		F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = ../Library/SwiftHTTP/SwiftHTTP.xcodeproj; sourceTree = "<group>"; };
+		F8D5724B1A618D620048637E /* HTTPRequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPRequestSerializer.swift; path = ../../Library/SwiftHTTP/HTTPRequestSerializer.swift; sourceTree = "<group>"; };
+		F8D5724C1A618D620048637E /* HTTPResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPResponseSerializer.swift; path = ../../Library/SwiftHTTP/HTTPResponseSerializer.swift; sourceTree = "<group>"; };
+		F8D5724D1A618D620048637E /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTask.swift; path = ../../Library/SwiftHTTP/HTTPTask.swift; sourceTree = "<group>"; };
+		F8D5724E1A618D630048637E /* HTTPUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPUpload.swift; path = ../../Library/SwiftHTTP/HTTPUpload.swift; sourceTree = "<group>"; };
+		F8D572541A618E340048637E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		F8D572561A618E6E0048637E /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		F8D572581A618F2E0048637E /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
+		F8D5725B1A6194220048637E /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +106,7 @@
 		F8D572081A6184BD0048637E = {
 			isa = PBXGroup;
 			children = (
+				F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */,
 				F8D572131A6184BD0048637E /* FundsTransfer */,
 				F8D5722C1A6184BD0048637E /* FundsTransferTests */,
 				F8D572121A6184BD0048637E /* Products */,
@@ -79,8 +125,11 @@
 		F8D572131A6184BD0048637E /* FundsTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				F8D5725D1A61943B0048637E /* Model */,
+				F8D572491A618D330048637E /* Controllers */,
+				F8D5724A1A618D4A0048637E /* Network */,
+				F8D572531A618D9F0048637E /* Others */,
 				F8D572161A6184BD0048637E /* AppDelegate.swift */,
-				F8D5721B1A6184BD0048637E /* ViewController.swift */,
 				F8D5721D1A6184BD0048637E /* Main.storyboard */,
 				F8D572201A6184BD0048637E /* Images.xcassets */,
 				F8D572221A6184BD0048637E /* LaunchScreen.xib */,
@@ -113,6 +162,54 @@
 				F8D5722E1A6184BD0048637E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8D5723A1A618CC20048637E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8D572411A618CC20048637E /* SwiftHTTP.framework */,
+				F8D572431A618CC20048637E /* SwiftHTTPTests.xctest */,
+				F8D572451A618CC20048637E /* SwiftHTTPOSX.framework */,
+				F8D572471A618CC20048637E /* SwiftHTTPOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8D572491A618D330048637E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F8D5721B1A6184BD0048637E /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F8D5724A1A618D4A0048637E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F8D5724B1A618D620048637E /* HTTPRequestSerializer.swift */,
+				F8D5724C1A618D620048637E /* HTTPResponseSerializer.swift */,
+				F8D5724D1A618D620048637E /* HTTPTask.swift */,
+				F8D5724E1A618D630048637E /* HTTPUpload.swift */,
+				F8D572581A618F2E0048637E /* NetworkAdapter.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		F8D572531A618D9F0048637E /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				F8D572541A618E340048637E /* Utility.swift */,
+				F8D572561A618E6E0048637E /* Localize.swift */,
+				F8D5725B1A6194220048637E /* Config.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		F8D5725D1A61943B0048637E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +279,12 @@
 			mainGroup = F8D572081A6184BD0048637E;
 			productRefGroup = F8D572121A6184BD0048637E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F8D5723A1A618CC20048637E /* Products */;
+					ProjectRef = F8D572391A618CC20048637E /* SwiftHTTP.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F8D572101A6184BD0048637E /* FundsTransfer */,
@@ -189,6 +292,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F8D572411A618CC20048637E /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = F8D572401A618CC20048637E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8D572431A618CC20048637E /* SwiftHTTPTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPTests.xctest;
+			remoteRef = F8D572421A618CC20048637E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8D572451A618CC20048637E /* SwiftHTTPOSX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTPOSX.framework;
+			remoteRef = F8D572441A618CC20048637E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8D572471A618CC20048637E /* SwiftHTTPOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPOSXTests.xctest;
+			remoteRef = F8D572461A618CC20048637E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F8D5720F1A6184BD0048637E /* Resources */ = {
@@ -215,9 +349,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D572571A618E6E0048637E /* Localize.swift in Sources */,
+				F8D572511A618D630048637E /* HTTPTask.swift in Sources */,
 				F8D5721C1A6184BD0048637E /* ViewController.swift in Sources */,
+				F8D572521A618D630048637E /* HTTPUpload.swift in Sources */,
+				F8D5725C1A6194220048637E /* Config.swift in Sources */,
+				F8D572591A618F2E0048637E /* NetworkAdapter.swift in Sources */,
+				F8D5724F1A618D630048637E /* HTTPRequestSerializer.swift in Sources */,
+				F8D572551A618E340048637E /* Utility.swift in Sources */,
 				F8D572171A6184BD0048637E /* AppDelegate.swift in Sources */,
 				F8D5721A1A6184BD0048637E /* FundsTransfer.xcdatamodeld in Sources */,
+				F8D572501A618D630048637E /* HTTPResponseSerializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FundsTransfer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FundsTransfer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
