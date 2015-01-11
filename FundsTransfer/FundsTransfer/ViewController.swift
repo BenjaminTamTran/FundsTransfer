@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 
     
     // MARK: Class's properties
-    
+    var networkAdapter = NetworkAdapter()
     
     // MARK: View's lifecycle
     override func viewDidLoad() {
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     }
     
     func visualize() {
-        accountInfoView.layer.cornerRadius = 20
+        accountInfoView.layer.cornerRadius = 10
         accountInfoView.layer.masksToBounds = true
     }
     
@@ -104,20 +104,36 @@ class ViewController: UIViewController {
     }
     
     func fetchData() {
-        var networkAdapter = NetworkAdapter()
-        //Get Bank list
-        networkAdapter.callWSWithMethodGet(bankListAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
+        //Get Account info
+        networkAdapter.callWSWithMethodGet(accountInfoAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
             if response?.responseObject != nil {
                 var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
-                var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
-                if (dataBankDict != nil) {
-                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
-                    for bankInfo in dataBankListArr! {
-                        var bankIn = bankInfo as NSDictionary
-                    }
+                var accountDict: NSDictionary? = jsonDic.objectForKey("AcctInfo") as? NSDictionary
+                var limitDict: NSDictionary? = jsonDic.objectForKey("LimitInfo") as? NSDictionary
+                if accountDict != nil &&  limitDict != nil {
+                    var amountString = Utility.amountInRpFormat(accountDict!.objectForKey("BalanceAmount") as String)
+                    var limitString = Utility.amountInRpFormat(limitDict!.objectForKey("RemainingLimit") as String)
+                    dispatch_async(dispatch_get_main_queue(),{
+                        self.balanceAmountLabel.text = amountString
+                        self.leftAmountLabel.text = limitString
+                    })
                 }
+                
             }
         }
+        //Get Bank list
+//        networkAdapter.callWSWithMethodGet(bankListAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
+//            if response?.responseObject != nil {
+//                var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
+//                var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
+//                if (dataBankDict != nil) {
+//                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
+//                    for bankInfo in dataBankListArr! {
+//                        var bankIn = bankInfo as NSDictionary
+//                    }
+//                }
+//            }
+//        }
     }
     
 }
