@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     // MARK: UI's elements
     
-    
+    @IBOutlet weak var accountInfoView: UIView!
+    @IBOutlet weak var balanceAmountLabel: UILabel!
+    @IBOutlet weak var leftAmountLabel: UILabel!
     
     // MARK: Class's constructors
     required init(coder aDecoder: NSCoder) {
@@ -93,7 +95,8 @@ class ViewController: UIViewController {
     }
     
     func visualize() {
-        
+        accountInfoView.layer.cornerRadius = 20
+        accountInfoView.layer.masksToBounds = true
     }
     
     func localize() {

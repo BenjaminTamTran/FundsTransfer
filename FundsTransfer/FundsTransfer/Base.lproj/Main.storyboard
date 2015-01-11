@@ -1,25 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Make a payment-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Make a payment" id="vXZ-lx-hvc" customClass="ViewController" customModule="FundsTransfer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wr8-T9-Gsa" userLabel="AccountInfo">
+                                <rect key="frame" x="25" y="100" width="325" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Account Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ty7-gN-HpE" userLabel="Label You Account Balance">
+                                        <rect key="frame" x="15" y="8" width="295" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="FVN-0G-XoJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RP 54,000,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-Tg-z6b" userLabel="Balance Amount">
+                                        <rect key="frame" x="40" y="34" width="245" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="h6y-qH-zer"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Limited Left:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFF-jE-VZC" userLabel="Label Daily Limited Left:">
+                                        <rect key="frame" x="30" y="73" width="128" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="128" id="SC7-M9-mml"/>
+                                            <constraint firstAttribute="height" constant="21" id="TFV-q1-iez"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 10,000,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdq-qb-NK1" userLabel="Left Amount">
+                                        <rect key="frame" x="162" y="73" width="147" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="147" id="Myy-mh-lBG"/>
+                                            <constraint firstAttribute="height" constant="21" id="pxD-4N-s8q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="u8F-Tg-z6b" firstAttribute="leading" secondItem="Wr8-T9-Gsa" secondAttribute="leading" constant="40" id="05m-NE-7Bt"/>
+                                    <constraint firstAttribute="trailing" secondItem="ty7-gN-HpE" secondAttribute="trailing" constant="15" id="36d-0A-c2M"/>
+                                    <constraint firstItem="UFF-jE-VZC" firstAttribute="top" secondItem="u8F-Tg-z6b" secondAttribute="bottom" constant="4" id="4n1-LP-MBL"/>
+                                    <constraint firstItem="ty7-gN-HpE" firstAttribute="top" secondItem="Wr8-T9-Gsa" secondAttribute="top" constant="8" id="ELE-0d-hWB"/>
+                                    <constraint firstItem="UFF-jE-VZC" firstAttribute="leading" secondItem="Wr8-T9-Gsa" secondAttribute="leading" constant="30" id="Nal-OR-bdu"/>
+                                    <constraint firstItem="Sdq-qb-NK1" firstAttribute="top" secondItem="UFF-jE-VZC" secondAttribute="top" id="OR9-W8-B2y"/>
+                                    <constraint firstItem="u8F-Tg-z6b" firstAttribute="top" secondItem="ty7-gN-HpE" secondAttribute="bottom" constant="5" id="fSs-1b-SZb"/>
+                                    <constraint firstItem="ty7-gN-HpE" firstAttribute="leading" secondItem="Wr8-T9-Gsa" secondAttribute="leading" constant="15" id="jPV-rv-qOK"/>
+                                    <constraint firstAttribute="height" constant="100" id="ji3-h4-wbC"/>
+                                    <constraint firstItem="Sdq-qb-NK1" firstAttribute="leading" secondItem="UFF-jE-VZC" secondAttribute="trailing" constant="4" id="sSZ-YF-AOw"/>
+                                    <constraint firstAttribute="trailing" secondItem="u8F-Tg-z6b" secondAttribute="trailing" constant="40" id="uS3-ws-KPv"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tzy-nX-3YB" userLabel="Logo">
+                                <rect key="frame" x="116" y="25" width="143" height="60"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wr8-T9-Gsa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="4Q0-Kg-MIc"/>
+                            <constraint firstItem="Tzy-nX-3YB" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="25" id="8TZ-W9-umQ"/>
+                            <constraint firstItem="Tzy-nX-3YB" firstAttribute="centerX" secondItem="Wr8-T9-Gsa" secondAttribute="centerX" id="8u8-xl-S2Q"/>
+                            <constraint firstAttribute="trailing" secondItem="Wr8-T9-Gsa" secondAttribute="trailing" constant="25" id="WDa-8d-BLh"/>
+                            <constraint firstItem="Wr8-T9-Gsa" firstAttribute="top" secondItem="Tzy-nX-3YB" secondAttribute="bottom" constant="15" id="j2y-OB-gdP"/>
+                        </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="accountInfoView" destination="Wr8-T9-Gsa" id="tj1-4h-ZQB"/>
+                        <outlet property="balanceAmountLabel" destination="u8F-Tg-z6b" id="Dqr-ui-Hm4"/>
+                        <outlet property="leftAmountLabel" destination="Sdq-qb-NK1" id="Wvf-HL-c6v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="371.5" y="250.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="143" height="60"/>
+    </resources>
 </document>
