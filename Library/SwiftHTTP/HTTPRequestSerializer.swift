@@ -36,7 +36,7 @@ public class HTTPRequestSerializer: NSObject {
     /// If the request should use piplining or not. Defaults to false.
     public var HTTPShouldUsePipelining = false
     /// How long the timeout interval is. Defaults to 60 seconds.
-    public var timeoutInterval: NSTimeInterval = 60
+    public var timeoutInterval: NSTimeInterval = 15
     /// Set the request cache policy. Defaults to UseProtocolCachePolicy.
     public var cachePolicy: NSURLRequestCachePolicy = NSURLRequestCachePolicy.UseProtocolCachePolicy
     /// Set the network service. Defaults to NetworkServiceTypeDefault.
@@ -67,6 +67,9 @@ public class HTTPRequestSerializer: NSObject {
         for (key,val) in self.headers {
             request.addValue(val, forHTTPHeaderField: key)
         }
+        //Hard code to add Header value
+        request.addValue(bearAtuthenticationHeaderValue, forHTTPHeaderField: "Authorization")
+        request.addValue(msisdnHeaderValue, forHTTPHeaderField: "Msisdn")
         return request
     }
     

@@ -553,6 +553,7 @@
 				F8D572351A6184BD0048637E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8D572361A6184BD0048637E /* Build configuration list for PBXNativeTarget "FundsTransferTests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +562,7 @@
 				F8D572381A6184BD0048637E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

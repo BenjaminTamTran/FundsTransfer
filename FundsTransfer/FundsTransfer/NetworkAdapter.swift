@@ -21,13 +21,13 @@ class NetworkAdapter: NSObject {
     
     
     // MARK: Class's public methods
-    func callWSWithAction(action: String, url: String, parameters: Dictionary<String,AnyObject>?, withCompletion completion:((response: HTTPResponse?, error: NSError?) -> Void)?) {
+    func callWSWithMethodGet(url: String, parameters: Dictionary<String,AnyObject>?, withCompletion completion:((response: HTTPResponse?, error: NSError?) -> Void)?) {
         var request = HTTPTask()
         addIndicator()
         request.GET(url, parameters: parameters, success: {(response: HTTPResponse?) -> Void in
-            //            println("response.statusCode \(response?.statusCode)")
-            //            var str = NSString(data: response?.responseObject as NSData, encoding: NSUTF8StringEncoding)
-            //            println("\(str)")
+            println("response.statusCode \(response?.statusCode)")
+            var str = NSString(data: response?.responseObject as NSData, encoding: NSUTF8StringEncoding)
+            println("\(str)")
             self.removeIndicator()
             if response != nil {
                 if response?.statusCode != nil {
@@ -52,10 +52,10 @@ class NetworkAdapter: NSObject {
                 })
             }
             },failure: {(error: NSError, response: HTTPResponse?) in
-                //                println("error: \(error)")
+                println("error: \(error)")
                 self.removeIndicator()
                 Utility.showAlertWithMessage(connectionErrorMessage, title: titleWarning)
-                //                completion!(response: nil, error: error)
+//                completion!(response: nil, error: error)
         })
     }
     
