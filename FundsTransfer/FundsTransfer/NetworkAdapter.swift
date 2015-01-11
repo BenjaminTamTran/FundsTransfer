@@ -16,10 +16,6 @@ class NetworkAdapter: NSObject {
         super.init()
     }
     
-    
-    // MARK: Class's properties
-    
-    
     // MARK: Class's public methods
     func callWSWithMethodGet(url: String, parameters: Dictionary<String,AnyObject>?, withCompletion completion:((response: HTTPResponse?, error: NSError?) -> Void)?) {
         var request = HTTPTask()
@@ -55,7 +51,43 @@ class NetworkAdapter: NSObject {
                 println("error: \(error)")
                 self.removeIndicator()
                 Utility.showAlertWithMessage(connectionErrorMessage, title: titleWarning)
-//                completion!(response: nil, error: error)
+        })
+    }
+    
+    func callWSWithMethodPost(url: String, parameters: Dictionary<String,AnyObject>?, withCompletion completion:((response: HTTPResponse?, error: NSError?) -> Void)?) {
+        var request = HTTPTask()
+        addIndicator()
+        request.POST(url, parameters: parameters, success: {(response: HTTPResponse?) -> Void in
+            println("response.statusCode \(response?.statusCode)")
+            var str = NSString(data: response?.responseObject as NSData, encoding: NSUTF8StringEncoding)
+            println("\(str)")
+            self.removeIndicator()
+            if response != nil {
+                if response?.statusCode != nil {
+                    if 200 <= response?.statusCode && response?.statusCode <= 299 {
+                        if completion != nil {
+                            completion!(response: response, error: nil)
+                        }
+                    }
+                    else {
+                        self.errorHandling(response!.statusCode!)
+                    }
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue(),{
+                        Utility.showAlertWithMessage(somethingWrongMessage, title: titleWarning)
+                    })
+                }
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(),{
+                    Utility.showAlertWithMessage(somethingWrongMessage, title: titleWarning)
+                })
+            }
+            },failure: {(error: NSError, response: HTTPResponse?) in
+                println("error: \(error)")
+                self.removeIndicator()
+                self.errorHandling(error.code)
         })
     }
     

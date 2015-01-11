@@ -30,7 +30,10 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     @IBOutlet weak var widthMainViewBankLConstraints: NSLayoutConstraint!
     @IBOutlet weak var bankSelectedTxtField: UITextField!
     @IBOutlet weak var bankListTableView: UITableView!
-    
+    @IBOutlet weak var accountNumberTextFiled: UITextField!
+    @IBOutlet weak var amountTransferLabel: UILabel!
+    @IBOutlet weak var accountNameLabel: UILabel!
+    @IBOutlet weak var amountTransferTxtField: UITextField!
     
     // MARK: Class's constructors
     required init(coder aDecoder: NSCoder) {
@@ -48,6 +51,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     var dataBankListArr = NSMutableArray()
     let bankCellIdentifier = "bankCellIdentifier"
     var selectedBankName = ""
+    var selectedBankCode = ""
+
     
     // MARK: View's lifecycle
     override func viewDidLoad() {
@@ -127,6 +132,25 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
     
     @IBAction func payNowAction(sender: AnyObject) {
+        println("[TransferAddRq: [TranferInfo: [DestAcctNo: \(accountNumberTextFiled.text), DestBankCode: \(selectedBankCode), Amt: \(amountTransferTxtField.text), TranType: I001]]]")
+        var param: Dictionary = ["TransferAddRq": ["TranferInfo": ["DestAcctNo": accountNumberTextFiled.text, "DestBankCode": selectedBankCode, "Amt": amountTransferTxtField.text, "TranType": "I001"]]]
+//        {"TransferAddRq" : { "TranferInfo" : { "DestAcctNo" : "1020028960", "DestBankCode" : "950", "Amt" : 3699,"TranType" : "I001"} } }
+        networkAdapter.callWSWithMethodPost(initTransferAction, parameters: param) { (response: HTTPResponse?, error: NSError?) -> Void in
+            if response?.responseObject != nil {
+                var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
+                var transferDict: NSDictionary? = jsonDic.objectForKey("TransferInfo") as? NSDictionary
+                if transferDict != nil {
+                    var accountName = transferDict!.objectForKey("DestAcctName") as String
+                    dispatch_async(dispatch_get_main_queue(),{
+                        self.accountNameLabel.text = accountName
+                    })
+                }
+                else {
+                    Utility.showAlertWithMessage(somethingWrongMessage, title: titleError)
+                }
+            }
+        }
+        amountTransferLabel.text = Utility.amountInRpFormat(amountTransferTxtField.text)
         leadingMainViewPaymentRConstraint.constant = 0
     }
     
@@ -178,6 +202,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
         
         bankListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: bankCellIdentifier)
+        accountNumberTextFiled.text = "1020028960"
     }
     
     func localize() {
@@ -245,7 +270,6 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // MARL: UITableViewDataSource's methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        println("dataBankListArr.count \(dataBankListArr.count)")
         return dataBankListArr.count
     }
     
@@ -262,6 +286,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         var bankInfo = dataBankListArr.objectAtIndex(indexPath.row) as? NSDictionary
         if bankInfo != nil {
             selectedBankName = bankInfo?.objectForKey("Name") as String
+            selectedBankCode = bankInfo?.objectForKey("Code") as String
         }
     }
     

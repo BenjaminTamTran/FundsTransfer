@@ -455,7 +455,7 @@
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zm2-vy-duv" userLabel="BankList">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <rect key="frame" x="375" y="100" width="375" height="567"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fdu-yi-Jha">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,7 +532,7 @@
                             <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="OSM-pI-esg"/>
                             <constraint firstAttribute="trailing" secondItem="uhY-3F-neZ" secondAttribute="trailing" id="Ps3-Wq-6rU"/>
                             <constraint firstItem="Q4R-nl-12t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="RON-0y-Zsg"/>
-                            <constraint firstItem="zm2-vy-duv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Slt-Tg-vWp"/>
+                            <constraint firstItem="zm2-vy-duv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="Slt-Tg-vWp"/>
                             <constraint firstItem="uhY-3F-neZ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UG0-t3-Ouo"/>
                             <constraint firstItem="Wr8-T9-Gsa" firstAttribute="top" secondItem="zlN-hF-6Q9" secondAttribute="top" id="VEW-9l-sTp"/>
                             <constraint firstAttribute="trailing" secondItem="Wr8-T9-Gsa" secondAttribute="trailing" constant="25" id="WDa-8d-BLh"/>
@@ -549,7 +549,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="accountInfoView" destination="Wr8-T9-Gsa" id="tj1-4h-ZQB"/>
-                        <outlet property="backgroundInnerPaymentView" destination="wIe-4R-mto" id="R9D-4H-Cjj"/>
+                        <outlet property="accountNameLabel" destination="FWi-gr-nPw" id="Tof-mE-9ko"/>
+                        <outlet property="accountNumberTextFiled" destination="8wb-bX-w17" id="NSm-gs-aIm"/>
+                        <outlet property="amountTransferLabel" destination="yhl-Gk-TkP" id="6eZ-ka-v1G"/>
+                        <outlet property="amountTransferTxtField" destination="Tga-o2-GTe" id="x90-kt-V7X"/>
+                        <outlet property="backgroundInnerPaymentView" destination="wIe-4R-mto" id="4nf-mv-3wN"/>
                         <outlet property="backgroundPaymentView" destination="8Sl-hz-wKw" id="PmL-8t-9dB"/>
                         <outlet property="balanceAmountLabel" destination="u8F-Tg-z6b" id="Dqr-ui-Hm4"/>
                         <outlet property="bankInfoBGView" destination="kE6-vb-gRW" id="iTZ-NG-c9F"/>
