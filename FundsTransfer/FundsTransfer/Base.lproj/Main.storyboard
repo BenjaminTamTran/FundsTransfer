@@ -226,7 +226,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uuP-u6-C6U" userLabel="Bank TxtField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uuP-u6-C6U" userLabel="Bank TxtField">
                                                 <rect key="frame" x="86" y="8" width="223" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="jwQ-jd-cww"/>
@@ -235,6 +235,15 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKa-ZC-Dsv" userLabel="Open Bank List">
+                                                <rect key="frame" x="86" y="8" width="223" height="30"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="openBankListAciton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bET-Qy-DwX"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pay-We-V5w" userLabel="line">
                                                 <rect key="frame" x="9" y="45" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -274,16 +283,20 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Pay-We-V5w" firstAttribute="leading" secondItem="kE6-vb-gRW" secondAttribute="leading" constant="9" id="8b9-wn-NhT"/>
+                                            <constraint firstItem="pKa-ZC-Dsv" firstAttribute="height" secondItem="uuP-u6-C6U" secondAttribute="height" id="971-5o-ICv"/>
                                             <constraint firstItem="Pay-We-V5w" firstAttribute="leading" secondItem="6su-v3-LWD" secondAttribute="leading" id="ApS-hH-eER"/>
                                             <constraint firstItem="8wb-bX-w17" firstAttribute="leading" secondItem="uuP-u6-C6U" secondAttribute="leading" id="HM8-DW-b3i"/>
                                             <constraint firstItem="uuP-u6-C6U" firstAttribute="leading" secondItem="1ar-7j-HxV" secondAttribute="trailing" constant="4" id="QcT-yu-fD5"/>
                                             <constraint firstItem="1ar-7j-HxV" firstAttribute="leading" secondItem="kE6-vb-gRW" secondAttribute="leading" constant="9" id="SEh-n1-vQq"/>
+                                            <constraint firstItem="pKa-ZC-Dsv" firstAttribute="top" secondItem="uuP-u6-C6U" secondAttribute="top" id="SKG-WB-3Jv"/>
+                                            <constraint firstItem="pKa-ZC-Dsv" firstAttribute="leading" secondItem="uuP-u6-C6U" secondAttribute="leading" id="UxS-p6-yR8"/>
                                             <constraint firstItem="8wb-bX-w17" firstAttribute="top" secondItem="Pay-We-V5w" secondAttribute="bottom" constant="15" id="Zmm-HL-egN"/>
                                             <constraint firstItem="1ar-7j-HxV" firstAttribute="top" secondItem="kE6-vb-gRW" secondAttribute="top" constant="12" id="dEA-jK-Aw8"/>
                                             <constraint firstItem="uuP-u6-C6U" firstAttribute="top" secondItem="kE6-vb-gRW" secondAttribute="top" constant="8" id="ehN-3J-vTl"/>
                                             <constraint firstItem="Pay-We-V5w" firstAttribute="top" secondItem="uuP-u6-C6U" secondAttribute="bottom" constant="7" id="gFJ-r9-P8Q"/>
                                             <constraint firstItem="6su-v3-LWD" firstAttribute="top" secondItem="8wb-bX-w17" secondAttribute="bottom" constant="7" id="ir7-5e-HcA"/>
                                             <constraint firstItem="1ar-7j-HxV" firstAttribute="leading" secondItem="5Sc-zL-QFt" secondAttribute="leading" id="nF3-Wr-RFf"/>
+                                            <constraint firstItem="pKa-ZC-Dsv" firstAttribute="width" secondItem="uuP-u6-C6U" secondAttribute="width" id="y0T-ge-JZu"/>
                                             <constraint firstItem="5Sc-zL-QFt" firstAttribute="top" secondItem="Pay-We-V5w" secondAttribute="bottom" constant="19" id="yVq-Ah-PEV"/>
                                         </constraints>
                                     </view>
@@ -441,10 +454,69 @@
                                     <constraint firstItem="8Sl-hz-wKw" firstAttribute="top" secondItem="zlN-hF-6Q9" secondAttribute="top" constant="10" id="wlq-tE-h3I"/>
                                 </constraints>
                             </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zm2-vy-duv" userLabel="BankList">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fdu-yi-Jha">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-wh-njX">
+                                            <rect key="frame" x="25" y="432" width="123" height="35"/>
+                                            <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="0JY-lh-JVE"/>
+                                                <constraint firstAttribute="width" constant="123" id="EAB-qO-3Wp"/>
+                                            </constraints>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="closeBankListAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F5s-1V-dKE"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oq5-4U-rKg">
+                                            <rect key="frame" x="227" y="432" width="123" height="35"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.72941176470000002" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="BGS-3s-rKM"/>
+                                                <constraint firstAttribute="height" constant="35" id="qRr-Fi-aIV"/>
+                                            </constraints>
+                                            <state key="normal" title="Select">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bIo-e2-sDr" userLabel="BankList Table">
+                                            <rect key="frame" x="40" y="50" width="295" height="332"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="vXZ-lx-hvc" id="CHj-c6-A5A"/>
+                                                <outlet property="delegate" destination="vXZ-lx-hvc" id="4z8-hR-cAF"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bIo-e2-sDr" firstAttribute="leading" secondItem="Fdu-yi-Jha" secondAttribute="leading" constant="40" id="01b-ED-8ig"/>
+                                        <constraint firstAttribute="trailing" secondItem="Oq5-4U-rKg" secondAttribute="trailing" constant="25" id="7eU-JQ-hFx"/>
+                                        <constraint firstAttribute="trailing" secondItem="bIo-e2-sDr" secondAttribute="trailing" constant="40" id="BOc-5g-psI"/>
+                                        <constraint firstItem="Oq5-4U-rKg" firstAttribute="top" secondItem="bIo-e2-sDr" secondAttribute="bottom" constant="50" id="Beb-Iy-LF9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Oq5-4U-rKg" secondAttribute="bottom" constant="100" id="FST-dY-RFH"/>
+                                        <constraint firstItem="vdX-wh-njX" firstAttribute="leading" secondItem="Fdu-yi-Jha" secondAttribute="leading" constant="25" id="RXG-q5-gST"/>
+                                        <constraint firstAttribute="bottom" secondItem="vdX-wh-njX" secondAttribute="bottom" constant="100" id="Rrw-Bb-H4w"/>
+                                        <constraint firstItem="bIo-e2-sDr" firstAttribute="top" secondItem="Fdu-yi-Jha" secondAttribute="top" constant="50" id="rw4-Cq-LvY"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="YAe-SJ-sIl"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z1z-YB-VaD" firstAttribute="top" secondItem="ngX-Sw-jay" secondAttribute="bottom" constant="15" id="07c-WW-1nk"/>
+                            <constraint firstItem="zm2-vy-duv" firstAttribute="top" secondItem="Tzy-nX-3YB" secondAttribute="bottom" constant="15" id="280-pR-o8K"/>
                             <constraint firstAttribute="trailing" secondItem="ngX-Sw-jay" secondAttribute="trailing" constant="10" id="2DY-rR-Fmg"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Q4R-nl-12t" secondAttribute="bottom" constant="15" id="2ts-mL-qPz"/>
                             <constraint firstItem="ngX-Sw-jay" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="215" id="46e-Tl-3eR"/>
@@ -457,6 +529,7 @@
                             <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="OSM-pI-esg"/>
                             <constraint firstAttribute="trailing" secondItem="uhY-3F-neZ" secondAttribute="trailing" id="Ps3-Wq-6rU"/>
                             <constraint firstItem="Q4R-nl-12t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="RON-0y-Zsg"/>
+                            <constraint firstItem="zm2-vy-duv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Slt-Tg-vWp"/>
                             <constraint firstItem="uhY-3F-neZ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UG0-t3-Ouo"/>
                             <constraint firstItem="Wr8-T9-Gsa" firstAttribute="top" secondItem="zlN-hF-6Q9" secondAttribute="top" id="VEW-9l-sTp"/>
                             <constraint firstAttribute="trailing" secondItem="Wr8-T9-Gsa" secondAttribute="trailing" constant="25" id="WDa-8d-BLh"/>
@@ -466,6 +539,7 @@
                             <constraint firstItem="z1z-YB-VaD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="uRb-3M-FxW"/>
                             <constraint firstAttribute="bottom" secondItem="uhY-3F-neZ" secondAttribute="bottom" constant="100" id="ubC-SJ-DTj"/>
                             <constraint firstAttribute="trailing" secondItem="sZc-gq-oZk" secondAttribute="trailing" constant="25" id="yKf-zO-cfo"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="zm2-vy-duv" secondAttribute="bottom" id="yzE-Mg-bji"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -477,13 +551,17 @@
                         <outlet property="balanceAmountLabel" destination="u8F-Tg-z6b" id="Dqr-ui-Hm4"/>
                         <outlet property="bankInfoBGView" destination="kE6-vb-gRW" id="iTZ-NG-c9F"/>
                         <outlet property="bankInfoView" destination="z1z-YB-VaD" id="QGc-tN-Eo4"/>
+                        <outlet property="bankListTableView" destination="bIo-e2-sDr" id="6uc-qw-fcg"/>
+                        <outlet property="bankSelectedTxtField" destination="uuP-u6-C6U" id="HE7-uI-4ce"/>
                         <outlet property="contactEmailTextField" destination="Odz-zs-qhr" id="kZq-4a-05j"/>
                         <outlet property="hideKeyboardButton" destination="uhY-3F-neZ" id="B8S-0r-LIM"/>
+                        <outlet property="leadingMainViewBankLRConstraint" destination="Slt-Tg-vWp" id="ibC-t7-BQa"/>
                         <outlet property="leadingMainViewPaymentRConstraint" destination="OSM-pI-esg" id="iMF-9i-LO0"/>
                         <outlet property="leftAmountLabel" destination="Sdq-qb-NK1" id="Wvf-HL-c6v"/>
                         <outlet property="transferAreaTopConstraint" destination="46e-Tl-3eR" id="IQZ-6v-FgL"/>
                         <outlet property="transferInfoBGView" destination="9vH-IR-ie0" id="bXx-du-Ykr"/>
                         <outlet property="transferInfoView" destination="ngX-Sw-jay" id="6YM-AY-KIZ"/>
+                        <outlet property="widthMainViewBankLConstraints" destination="YAe-SJ-sIl" id="8cO-aa-lVL"/>
                         <outlet property="widthMainViewPaymentConstraints" destination="oBL-X2-4tq" id="Tyh-Wu-bKD"/>
                     </connections>
                 </viewController>

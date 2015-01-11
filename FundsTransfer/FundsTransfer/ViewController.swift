@@ -9,7 +9,7 @@
 import UIKit
 import AddressBookUI
 
-class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate {
+class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: UI's elements
     @IBOutlet weak var accountInfoView: UIView!
@@ -26,6 +26,10 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     @IBOutlet weak var widthMainViewPaymentConstraints: NSLayoutConstraint!
     @IBOutlet weak var backgroundInnerPaymentView: UIView!
     @IBOutlet weak var backgroundPaymentView: UIView!
+    @IBOutlet weak var leadingMainViewBankLRConstraint: NSLayoutConstraint!
+    @IBOutlet weak var widthMainViewBankLConstraints: NSLayoutConstraint!
+    @IBOutlet weak var bankSelectedTxtField: UITextField!
+    @IBOutlet weak var bankListTableView: UITableView!
     
     
     // MARK: Class's constructors
@@ -123,7 +127,14 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         leadingMainViewPaymentRConstraint.constant = 0
     }
     
+    @IBAction func openBankListAciton(sender: AnyObject) {
+        leadingMainViewBankLRConstraint.constant = 0
+        bankListTableView.reloadData()
+    }
     
+    @IBAction func closeBankListAction(sender: AnyObject) {
+        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+    }
     
     // MARK: Class's private methods
     func initialize() {
@@ -149,8 +160,14 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         backgroundInnerPaymentView.layer.cornerRadius = 5
         backgroundInnerPaymentView.layer.masksToBounds = true
         
+        bankListTableView.layer.cornerRadius = 10
+        bankListTableView.layer.masksToBounds = true
+        
         widthMainViewPaymentConstraints.constant = UIScreen.mainScreen().bounds.width
         leadingMainViewPaymentRConstraint.constant = UIScreen.mainScreen().bounds.width
+        
+        widthMainViewBankLConstraints.constant = UIScreen.mainScreen().bounds.width
+        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
     }
     
     func localize() {
@@ -211,6 +228,17 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         } else {
             Utility.showAlertWithMessage("No email address", title: titleWarning)
         }
+    }
+    
+    
+    // MARL: UITableViewDataSource's methods
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("bankCellIdentifier", forIndexPath: indexPath) as UITableViewCell
+        return cell
     }
     
 }
