@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AddressBookUI
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate {
     
     // MARK: UI's elements
     @IBOutlet weak var accountInfoView: UIView!
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bankInfoBGView: UIView!
     @IBOutlet weak var hideKeyboardButton: UIButton!
     @IBOutlet weak var transferAreaTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contactEmailTextField: UITextField!
     
     // MARK: Class's constructors
     required init(coder aDecoder: NSCoder) {
@@ -99,6 +101,14 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @IBAction func openAddressBookButton(sender: AnyObject) {
+        let picker = ABPeoplePickerNavigationController()
+        picker.peoplePickerDelegate = self
+        if picker.respondsToSelector(Selector("predicateForEnablingPerson")) {
+            picker.predicateForEnablingPerson = NSPredicate(format: "emailAddresses.@count > 0")
+        }
+        presentViewController(picker, animated: true, completion: nil)
+    }
     
     // MARK: Class's private methods
     func initialize() {
@@ -165,6 +175,19 @@ class ViewController: UIViewController {
     func keyboardWillHide(notification: NSNotification) {
         hideKeyboardButton.hidden = true
         transferAreaTopConstraint.constant = 215
+    }
+    
+    
+    // MARK: ABPeoplePickerNavigationControllerDelegate's methods
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecordRef!) {
+        let emails: ABMultiValueRef = ABRecordCopyValue(person, kABPersonEmailProperty).takeRetainedValue()
+        if (ABMultiValueGetCount(emails) > 0) {
+            let index = 0 as CFIndex
+            let email = ABMultiValueCopyValueAtIndex(emails, index).takeRetainedValue() as String
+            contactEmailTextField.text = email
+        } else {
+            Utility.showAlertWithMessage("No email address", title: titleWarning)
+        }
     }
     
 }

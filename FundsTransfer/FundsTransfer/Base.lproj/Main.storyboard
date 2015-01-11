@@ -146,7 +146,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Odz-zs-qhr" userLabel="Contact TxtField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Odz-zs-qhr" userLabel="Contact TxtField">
                                                 <rect key="frame" x="86" y="113" width="223" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="MZu-Fs-sZ7"/>
@@ -155,6 +155,15 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sem-Ut-mb4" userLabel="Open Address Book">
+                                                <rect key="frame" x="86" y="113" width="223" height="30"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="openAddressBookButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GQS-e8-TBm"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPb-Bx-AS9" userLabel="line">
                                                 <rect key="frame" x="9" y="150" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,12 +175,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="sem-Ut-mb4" firstAttribute="height" secondItem="Odz-zs-qhr" secondAttribute="height" id="0eQ-MT-UeO"/>
                                             <constraint firstItem="OC4-ff-SXb" firstAttribute="top" secondItem="1sl-nG-E8f" secondAttribute="bottom" constant="19" id="5J4-ve-Z57"/>
                                             <constraint firstItem="EbW-LP-AZk" firstAttribute="leading" secondItem="OC4-ff-SXb" secondAttribute="leading" id="5kc-oo-O0p"/>
                                             <constraint firstAttribute="trailing" secondItem="Tga-o2-GTe" secondAttribute="trailing" constant="8" id="81i-dr-RNQ"/>
                                             <constraint firstItem="EbW-LP-AZk" firstAttribute="leading" secondItem="9vH-IR-ie0" secondAttribute="leading" constant="9" id="ART-he-YHS"/>
                                             <constraint firstItem="gPb-Bx-AS9" firstAttribute="top" secondItem="Odz-zs-qhr" secondAttribute="bottom" constant="7" id="Box-rw-fvP"/>
                                             <constraint firstItem="8OC-qo-2i1" firstAttribute="top" secondItem="s5e-H2-Khx" secondAttribute="bottom" constant="18" id="DI7-zq-TQl"/>
+                                            <constraint firstItem="sem-Ut-mb4" firstAttribute="width" secondItem="Odz-zs-qhr" secondAttribute="width" id="DMF-xF-46D"/>
                                             <constraint firstItem="UP9-IM-f5Z" firstAttribute="top" secondItem="1sl-nG-E8f" secondAttribute="bottom" constant="15" id="E7U-Kd-V9z"/>
                                             <constraint firstItem="Tga-o2-GTe" firstAttribute="trailing" secondItem="UP9-IM-f5Z" secondAttribute="trailing" id="Fz2-fW-0jB"/>
                                             <constraint firstItem="1sl-nG-E8f" firstAttribute="leading" secondItem="gPb-Bx-AS9" secondAttribute="leading" id="GQw-UG-PKu"/>
@@ -181,8 +192,10 @@
                                             <constraint firstItem="EbW-LP-AZk" firstAttribute="leading" secondItem="8OC-qo-2i1" secondAttribute="leading" id="ahp-8j-iDm"/>
                                             <constraint firstItem="1sl-nG-E8f" firstAttribute="top" secondItem="Tga-o2-GTe" secondAttribute="bottom" constant="7" id="dS2-Sb-AOU"/>
                                             <constraint firstItem="Odz-zs-qhr" firstAttribute="top" secondItem="s5e-H2-Khx" secondAttribute="bottom" constant="14" id="gon-ZG-LdB"/>
+                                            <constraint firstItem="sem-Ut-mb4" firstAttribute="centerY" secondItem="Odz-zs-qhr" secondAttribute="centerY" id="kjb-qI-dLi"/>
                                             <constraint firstItem="Tga-o2-GTe" firstAttribute="trailing" secondItem="Odz-zs-qhr" secondAttribute="trailing" id="nCL-En-uNo"/>
                                             <constraint firstItem="s5e-H2-Khx" firstAttribute="top" secondItem="UP9-IM-f5Z" secondAttribute="bottom" constant="7" id="qaH-fw-9cH"/>
+                                            <constraint firstItem="sem-Ut-mb4" firstAttribute="centerX" secondItem="Odz-zs-qhr" secondAttribute="centerX" id="sMm-AI-hgR"/>
                                             <constraint firstItem="1sl-nG-E8f" firstAttribute="leading" secondItem="9vH-IR-ie0" secondAttribute="leading" constant="9" id="vPV-96-gZd"/>
                                             <constraint firstItem="Tga-o2-GTe" firstAttribute="top" secondItem="9vH-IR-ie0" secondAttribute="top" constant="8" id="vbZ-dR-cfr"/>
                                         </constraints>
@@ -200,46 +213,88 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1z-YB-VaD" userLabel="BankInfo">
                                 <rect key="frame" x="10" y="405" width="355" height="127"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-vb-gRW" userLabel="Background">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-vb-gRW" userLabel="Background">
                                         <rect key="frame" x="30" y="8" width="317" height="111"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ar-7j-HxV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ar-7j-HxV">
                                                 <rect key="frame" x="9" y="12" width="73" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="1CT-jb-79d"/>
+                                                    <constraint firstAttribute="width" constant="73" id="1u4-HO-CaD"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uuP-u6-C6U" userLabel="Bank TxtField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uuP-u6-C6U" userLabel="Bank TxtField">
                                                 <rect key="frame" x="86" y="8" width="223" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="jwQ-jd-cww"/>
+                                                    <constraint firstAttribute="width" constant="223" id="lQs-5y-tKK"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pay-We-V5w" userLabel="line">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pay-We-V5w" userLabel="line">
                                                 <rect key="frame" x="9" y="45" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="NrS-FV-mnx"/>
+                                                    <constraint firstAttribute="height" constant="1" id="eMi-Tz-cK8"/>
+                                                </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Acc Num" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sc-zL-QFt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acc Num" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sc-zL-QFt">
                                                 <rect key="frame" x="9" y="65" width="73" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="6PI-aU-XMN"/>
+                                                    <constraint firstAttribute="width" constant="73" id="iKc-7v-5hZ"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8wb-bX-w17" userLabel="Acc Num TxtField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8wb-bX-w17" userLabel="Acc Num TxtField">
                                                 <rect key="frame" x="86" y="61" width="223" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="223" id="xtv-0M-doK"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ylz-mP-MEW"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6su-v3-LWD" userLabel="line">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6su-v3-LWD" userLabel="line">
                                                 <rect key="frame" x="9" y="98" width="300" height="1"/>
                                                 <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="B6F-KH-Wys"/>
+                                                    <constraint firstAttribute="width" constant="300" id="BM7-GQ-teW"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Pay-We-V5w" firstAttribute="leading" secondItem="kE6-vb-gRW" secondAttribute="leading" constant="9" id="8b9-wn-NhT"/>
+                                            <constraint firstItem="Pay-We-V5w" firstAttribute="leading" secondItem="6su-v3-LWD" secondAttribute="leading" id="ApS-hH-eER"/>
+                                            <constraint firstItem="8wb-bX-w17" firstAttribute="leading" secondItem="uuP-u6-C6U" secondAttribute="leading" id="HM8-DW-b3i"/>
+                                            <constraint firstItem="uuP-u6-C6U" firstAttribute="leading" secondItem="1ar-7j-HxV" secondAttribute="trailing" constant="4" id="QcT-yu-fD5"/>
+                                            <constraint firstItem="1ar-7j-HxV" firstAttribute="leading" secondItem="kE6-vb-gRW" secondAttribute="leading" constant="9" id="SEh-n1-vQq"/>
+                                            <constraint firstItem="8wb-bX-w17" firstAttribute="top" secondItem="Pay-We-V5w" secondAttribute="bottom" constant="15" id="Zmm-HL-egN"/>
+                                            <constraint firstItem="1ar-7j-HxV" firstAttribute="top" secondItem="kE6-vb-gRW" secondAttribute="top" constant="12" id="dEA-jK-Aw8"/>
+                                            <constraint firstItem="uuP-u6-C6U" firstAttribute="top" secondItem="kE6-vb-gRW" secondAttribute="top" constant="8" id="ehN-3J-vTl"/>
+                                            <constraint firstItem="Pay-We-V5w" firstAttribute="top" secondItem="uuP-u6-C6U" secondAttribute="bottom" constant="7" id="gFJ-r9-P8Q"/>
+                                            <constraint firstItem="6su-v3-LWD" firstAttribute="top" secondItem="8wb-bX-w17" secondAttribute="bottom" constant="7" id="ir7-5e-HcA"/>
+                                            <constraint firstItem="1ar-7j-HxV" firstAttribute="leading" secondItem="5Sc-zL-QFt" secondAttribute="leading" id="nF3-Wr-RFf"/>
+                                            <constraint firstItem="5Sc-zL-QFt" firstAttribute="top" secondItem="Pay-We-V5w" secondAttribute="bottom" constant="19" id="yVq-Ah-PEV"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="kE6-vb-gRW" firstAttribute="top" secondItem="z1z-YB-VaD" secondAttribute="top" constant="8" id="SeN-eH-bb1"/>
+                                    <constraint firstAttribute="bottom" secondItem="kE6-vb-gRW" secondAttribute="bottom" constant="8" id="Skv-lL-NoX"/>
+                                    <constraint firstItem="kE6-vb-gRW" firstAttribute="leading" secondItem="z1z-YB-VaD" secondAttribute="leading" constant="30" id="iig-6P-bRR"/>
                                     <constraint firstAttribute="height" constant="127" id="uJB-1W-Eyj"/>
+                                    <constraint firstAttribute="trailing" secondItem="kE6-vb-gRW" secondAttribute="trailing" constant="8" id="ySc-6P-4BH"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhY-3F-neZ" userLabel="hideKeyBoard">
@@ -306,6 +361,7 @@
                         <outlet property="balanceAmountLabel" destination="u8F-Tg-z6b" id="Dqr-ui-Hm4"/>
                         <outlet property="bankInfoBGView" destination="kE6-vb-gRW" id="iTZ-NG-c9F"/>
                         <outlet property="bankInfoView" destination="z1z-YB-VaD" id="QGc-tN-Eo4"/>
+                        <outlet property="contactEmailTextField" destination="Odz-zs-qhr" id="kZq-4a-05j"/>
                         <outlet property="hideKeyboardButton" destination="uhY-3F-neZ" id="B8S-0r-LIM"/>
                         <outlet property="leftAmountLabel" destination="Sdq-qb-NK1" id="Wvf-HL-c6v"/>
                         <outlet property="transferAreaTopConstraint" destination="46e-Tl-3eR" id="IQZ-6v-FgL"/>
