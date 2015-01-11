@@ -22,6 +22,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     @IBOutlet weak var hideKeyboardButton: UIButton!
     @IBOutlet weak var transferAreaTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var contactEmailTextField: UITextField!
+    @IBOutlet weak var leadingMainViewPaymentRConstraint: NSLayoutConstraint!
+    @IBOutlet weak var widthMainViewPaymentConstraints: NSLayoutConstraint!
+    @IBOutlet weak var backgroundInnerPaymentView: UIView!
+    @IBOutlet weak var backgroundPaymentView: UIView!
+    
     
     // MARK: Class's constructors
     required init(coder aDecoder: NSCoder) {
@@ -46,9 +51,9 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        fetchData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,6 +115,16 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         presentViewController(picker, animated: true, completion: nil)
     }
     
+    @IBAction func goBackAction(sender: AnyObject) {
+        leadingMainViewPaymentRConstraint.constant = UIScreen.mainScreen().bounds.width
+    }
+    
+    @IBAction func payNowAction(sender: AnyObject) {
+        leadingMainViewPaymentRConstraint.constant = 0
+    }
+    
+    
+    
     // MARK: Class's private methods
     func initialize() {
         
@@ -128,6 +143,14 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         bankInfoView.layer.masksToBounds = true
         bankInfoBGView.layer.cornerRadius = 5
         bankInfoBGView.layer.masksToBounds = true
+        
+        backgroundPaymentView.layer.cornerRadius = 10
+        backgroundPaymentView.layer.masksToBounds = true
+        backgroundInnerPaymentView.layer.cornerRadius = 5
+        backgroundInnerPaymentView.layer.masksToBounds = true
+        
+        widthMainViewPaymentConstraints.constant = UIScreen.mainScreen().bounds.width
+        leadingMainViewPaymentRConstraint.constant = UIScreen.mainScreen().bounds.width
     }
     
     func localize() {
