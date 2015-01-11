@@ -419,8 +419,8 @@ public class HTTPTask : NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
     
     //MARK: NSURLSession Delegate Methods
     public func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void) {
-        challenge.sender .useCredential(NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!), forAuthenticationChallenge: challenge)
-        challenge.sender .continueWithoutCredentialForAuthenticationChallenge(challenge)
+//        challenge.sender .continueWithoutCredentialForAuthenticationChallenge(challenge)
+        completionHandler(.UseCredential, NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!))
     }
     
     /// Method for authentication challenge.

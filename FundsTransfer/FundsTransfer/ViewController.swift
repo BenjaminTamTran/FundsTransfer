@@ -106,9 +106,9 @@ class ViewController: UIViewController {
         networkAdapter.callWSWithMethodGet(bankListAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
             if response?.responseObject != nil {
                 var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
-                var dataBankList: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
-                if (dataBankList != nil) {
-                    var dataBankListArr: NSArray? = jsonDic.objectForKey("Entry") as? NSArray
+                var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
+                if (dataBankDict != nil) {
+                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
                     for bankInfo in dataBankListArr! {
                         var bankIn = bankInfo as NSDictionary
                     }
