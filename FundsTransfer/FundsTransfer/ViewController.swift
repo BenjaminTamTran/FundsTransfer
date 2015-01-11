@@ -11,10 +11,15 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: UI's elements
-    
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var balanceAmountLabel: UILabel!
     @IBOutlet weak var leftAmountLabel: UILabel!
+    @IBOutlet weak var transferInfoView: UIView!
+    @IBOutlet weak var transferInfoBGView: UIView!
+    @IBOutlet weak var bankInfoView: UIView!
+    @IBOutlet weak var bankInfoBGView: UIView!
+    @IBOutlet weak var hideKeyboardButton: UIButton!
+    @IBOutlet weak var transferAreaTopConstraint: NSLayoutConstraint!
     
     // MARK: Class's constructors
     required init(coder aDecoder: NSCoder) {
@@ -40,6 +45,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -52,6 +59,7 @@ class ViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     
@@ -87,6 +95,9 @@ class ViewController: UIViewController {
     
     // MARK: View's Actions
     
+    @IBAction func hideKeyBoardAction(sender: AnyObject) {
+        view.endEditing(true)
+    }
     
     
     // MARK: Class's private methods
@@ -97,6 +108,16 @@ class ViewController: UIViewController {
     func visualize() {
         accountInfoView.layer.cornerRadius = 10
         accountInfoView.layer.masksToBounds = true
+        
+        transferInfoView.layer.cornerRadius = 10
+        transferInfoView.layer.masksToBounds = true
+        transferInfoBGView.layer.cornerRadius = 5
+        transferInfoBGView.layer.masksToBounds = true
+        
+        bankInfoView.layer.cornerRadius = 10
+        bankInfoView.layer.masksToBounds = true
+        bankInfoBGView.layer.cornerRadius = 5
+        bankInfoBGView.layer.masksToBounds = true
     }
     
     func localize() {
@@ -122,18 +143,28 @@ class ViewController: UIViewController {
             }
         }
         //Get Bank list
-//        networkAdapter.callWSWithMethodGet(bankListAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
-//            if response?.responseObject != nil {
-//                var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
-//                var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
-//                if (dataBankDict != nil) {
-//                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
-//                    for bankInfo in dataBankListArr! {
-//                        var bankIn = bankInfo as NSDictionary
-//                    }
-//                }
-//            }
-//        }
+        networkAdapter.callWSWithMethodGet(bankListAction, parameters: nil) { (response: HTTPResponse?, error: NSError?) -> Void in
+            if response?.responseObject != nil {
+                var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
+                var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
+                if (dataBankDict != nil) {
+                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
+                    for bankInfo in dataBankListArr! {
+                        var bankIn = bankInfo as NSDictionary
+                    }
+                }
+            }
+        }
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        hideKeyboardButton.hidden = false
+        transferAreaTopConstraint.constant = 90
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        hideKeyboardButton.hidden = true
+        transferAreaTopConstraint.constant = 215
     }
     
 }
