@@ -150,7 +150,9 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 }
             }
         }
-        amountTransferLabel.text = Utility.amountInRpFormat(amountTransferTxtField.text)
+        if amountTransferTxtField.text != nil && amountTransferTxtField.text.lengthOfBytesUsingEncoding(NSStringEncoding.allZeros) > 0 {
+            amountTransferLabel.text = Utility.amountInRpFormat(amountTransferTxtField.text)
+        }
         leadingMainViewPaymentRConstraint.constant = 0
     }
     
@@ -166,6 +168,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         bankSelectedTxtField.text = selectedBankName
         leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
     }
+    
+    @IBAction func confirmPaymentAction(sender: AnyObject) {
+        Utility.showAlertWithMessage("Payment has been sent!", title: "Info")
+    }
+    
     
     
     // MARK: Class's private methods

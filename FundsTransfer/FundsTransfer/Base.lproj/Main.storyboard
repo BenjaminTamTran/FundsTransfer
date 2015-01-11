@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlN-hF-6Q9" userLabel="PaymentResult">
-                                <rect key="frame" x="375" y="100" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sl-hz-wKw" userLabel="Result">
                                         <rect key="frame" x="15" y="10" width="345" height="160"/>
@@ -429,28 +429,45 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-39-VeR">
-                                        <rect key="frame" x="141" y="200" width="93" height="30"/>
+                                        <rect key="frame" x="242" y="497" width="93" height="30"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.72941176470000002" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="93" id="FxM-4D-esR"/>
-                                            <constraint firstAttribute="height" constant="30" id="mnF-Do-LlT"/>
+                                            <constraint firstAttribute="width" constant="93" id="0MN-ht-9J2"/>
+                                            <constraint firstAttribute="height" constant="30" id="Yyp-FE-w15"/>
                                         </constraints>
-                                        <state key="normal" title="OK">
+                                        <state key="normal" title="Confirm">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="goBackAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z2H-zJ-FEk"/>
+                                            <action selector="confirmPaymentAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Bl3-Ir-V2T"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODR-PI-QRR">
+                                        <rect key="frame" x="40" y="497" width="93" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="93" id="IiX-Ha-ejR"/>
+                                            <constraint firstAttribute="height" constant="30" id="Jln-L4-4cX"/>
+                                        </constraints>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goBackAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="C03-oL-aT7"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="xKc-39-VeR" firstAttribute="top" secondItem="8Sl-hz-wKw" secondAttribute="bottom" constant="30" id="IQM-L9-kHK"/>
+                                    <constraint firstAttribute="bottom" secondItem="ODR-PI-QRR" secondAttribute="bottom" constant="40" id="A1r-oK-nuo"/>
                                     <constraint firstAttribute="trailing" secondItem="8Sl-hz-wKw" secondAttribute="trailing" constant="15" id="adp-bF-mRE"/>
+                                    <constraint firstItem="ODR-PI-QRR" firstAttribute="leading" secondItem="zlN-hF-6Q9" secondAttribute="leading" constant="40" id="adv-KD-DGc"/>
+                                    <constraint firstAttribute="trailing" secondItem="xKc-39-VeR" secondAttribute="trailing" constant="40" id="b1C-hP-CPE"/>
                                     <constraint firstItem="8Sl-hz-wKw" firstAttribute="leading" secondItem="zlN-hF-6Q9" secondAttribute="leading" constant="15" id="hLA-Ym-PMy"/>
                                     <constraint firstAttribute="width" constant="375" id="oBL-X2-4tq"/>
-                                    <constraint firstItem="xKc-39-VeR" firstAttribute="centerX" secondItem="8Sl-hz-wKw" secondAttribute="centerX" id="vF6-Hd-rPL"/>
+                                    <constraint firstItem="xKc-39-VeR" firstAttribute="top" secondItem="ODR-PI-QRR" secondAttribute="top" id="suW-FQ-TUz"/>
                                     <constraint firstItem="8Sl-hz-wKw" firstAttribute="top" secondItem="zlN-hF-6Q9" secondAttribute="top" constant="10" id="wlq-tE-h3I"/>
                                 </constraints>
                             </view>
@@ -529,7 +546,7 @@
                             <constraint firstItem="Tzy-nX-3YB" firstAttribute="centerX" secondItem="Wr8-T9-Gsa" secondAttribute="centerX" id="8u8-xl-S2Q"/>
                             <constraint firstItem="ngX-Sw-jay" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="F2C-cx-Oxf"/>
                             <constraint firstItem="sZc-gq-oZk" firstAttribute="top" secondItem="Q4R-nl-12t" secondAttribute="top" id="IpU-Mo-hVg"/>
-                            <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="OSM-pI-esg"/>
+                            <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OSM-pI-esg"/>
                             <constraint firstAttribute="trailing" secondItem="uhY-3F-neZ" secondAttribute="trailing" id="Ps3-Wq-6rU"/>
                             <constraint firstItem="Q4R-nl-12t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="RON-0y-Zsg"/>
                             <constraint firstItem="zm2-vy-duv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="Slt-Tg-vWp"/>
