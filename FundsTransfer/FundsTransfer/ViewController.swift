@@ -45,6 +45,9 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // MARK: Class's properties
     var networkAdapter = NetworkAdapter()
+    var dataBankListArr = NSMutableArray()
+    let bankCellIdentifier = "bankCellIdentifier"
+    var selectedBankName = ""
     
     // MARK: View's lifecycle
     override func viewDidLoad() {
@@ -55,9 +58,9 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        fetchData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        fetchData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -129,12 +132,17 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     @IBAction func openBankListAciton(sender: AnyObject) {
         leadingMainViewBankLRConstraint.constant = 0
-        bankListTableView.reloadData()
     }
     
     @IBAction func closeBankListAction(sender: AnyObject) {
         leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
     }
+    
+    @IBAction func selectBankInfoAction(sender: AnyObject) {
+        bankSelectedTxtField.text = selectedBankName
+        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+    }
+    
     
     // MARK: Class's private methods
     func initialize() {
@@ -168,6 +176,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         
         widthMainViewBankLConstraints.constant = UIScreen.mainScreen().bounds.width
         leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+        
+        bankListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: bankCellIdentifier)
     }
     
     func localize() {
@@ -198,9 +208,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
                 var dataBankDict: NSDictionary? = jsonDic.objectForKey("Entries") as? NSDictionary
                 if (dataBankDict != nil) {
-                    var dataBankListArr: NSArray? = dataBankDict!.objectForKey("Entry") as? NSArray
-                    for bankInfo in dataBankListArr! {
-                        var bankIn = bankInfo as NSDictionary
+                    self.dataBankListArr = dataBankDict!.objectForKey("Entry") as NSMutableArray
+                    if self.dataBankListArr.count > 0 {
+                        dispatch_async(dispatch_get_main_queue(),{
+                            self.bankListTableView.reloadData()
+                        })
                     }
                 }
             }
@@ -233,12 +245,24 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // MARL: UITableViewDataSource's methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+//        println("dataBankListArr.count \(dataBankListArr.count)")
+        return dataBankListArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("bankCellIdentifier", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(bankCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var bankInfo = dataBankListArr.objectAtIndex(indexPath.row) as? NSDictionary
+        if bankInfo != nil {
+            cell.textLabel?.text = bankInfo?.objectForKey("Name") as? String
+        }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        var bankInfo = dataBankListArr.objectAtIndex(indexPath.row) as? NSDictionary
+        if bankInfo != nil {
+            selectedBankName = bankInfo?.objectForKey("Name") as String
+        }
     }
     
 }
