@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlN-hF-6Q9" userLabel="PaymentResult">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <rect key="frame" x="375" y="100" width="375" height="567"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sl-hz-wKw" userLabel="Result">
                                         <rect key="frame" x="15" y="10" width="345" height="160"/>
@@ -546,7 +546,7 @@
                             <constraint firstItem="Tzy-nX-3YB" firstAttribute="centerX" secondItem="Wr8-T9-Gsa" secondAttribute="centerX" id="8u8-xl-S2Q"/>
                             <constraint firstItem="ngX-Sw-jay" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="F2C-cx-Oxf"/>
                             <constraint firstItem="sZc-gq-oZk" firstAttribute="top" secondItem="Q4R-nl-12t" secondAttribute="top" id="IpU-Mo-hVg"/>
-                            <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OSM-pI-esg"/>
+                            <constraint firstItem="zlN-hF-6Q9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="OSM-pI-esg"/>
                             <constraint firstAttribute="trailing" secondItem="uhY-3F-neZ" secondAttribute="trailing" id="Ps3-Wq-6rU"/>
                             <constraint firstItem="Q4R-nl-12t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="RON-0y-Zsg"/>
                             <constraint firstItem="zm2-vy-duv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="375" id="Slt-Tg-vWp"/>

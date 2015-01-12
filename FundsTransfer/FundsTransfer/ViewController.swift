@@ -50,8 +50,10 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     var networkAdapter = NetworkAdapter()
     var dataBankListArr = NSMutableArray()
     let bankCellIdentifier = "bankCellIdentifier"
+    var screenWidth = UIScreen.mainScreen().bounds.width
     var selectedBankName = ""
     var selectedBankCode = ""
+    var transferInfoDefaultY: CGFloat = 215.0
 
     
     // MARK: View's lifecycle
@@ -128,7 +130,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
     
     @IBAction func goBackAction(sender: AnyObject) {
-        leadingMainViewPaymentRConstraint.constant = UIScreen.mainScreen().bounds.width
+        leadingMainViewPaymentRConstraint.constant = screenWidth
     }
     
     @IBAction func payNowAction(sender: AnyObject) {
@@ -159,12 +161,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
     
     @IBAction func closeBankListAction(sender: AnyObject) {
-        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+        leadingMainViewBankLRConstraint.constant = screenWidth
     }
     
     @IBAction func selectBankInfoAction(sender: AnyObject) {
         bankSelectedTxtField.text = selectedBankName
-        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+        leadingMainViewBankLRConstraint.constant = screenWidth
     }
     
     @IBAction func confirmPaymentAction(sender: AnyObject) {
@@ -200,15 +202,16 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         bankListTableView.layer.cornerRadius = 10
         bankListTableView.layer.masksToBounds = true
         
-        widthMainViewPaymentConstraints.constant = UIScreen.mainScreen().bounds.width
-        leadingMainViewPaymentRConstraint.constant = UIScreen.mainScreen().bounds.width
+        widthMainViewPaymentConstraints.constant = screenWidth
+        leadingMainViewPaymentRConstraint.constant = screenWidth
         
-        widthMainViewBankLConstraints.constant = UIScreen.mainScreen().bounds.width
-        leadingMainViewBankLRConstraint.constant = UIScreen.mainScreen().bounds.width
+        widthMainViewBankLConstraints.constant = screenWidth
+        leadingMainViewBankLRConstraint.constant = screenWidth
         
         bankListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: bankCellIdentifier)
         accountNumberTextFiled.text = "1020028960"
         amountTransferTxtField.text = "9000"
+        transferInfoDefaultY = transferInfoView.frame.origin.y
     }
     
     func localize() {
@@ -252,12 +255,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     func keyboardWillShow(notification: NSNotification) {
         hideKeyboardButton.hidden = false
-        transferAreaTopConstraint.constant = 90
+        transferAreaTopConstraint.constant = accountInfoView.frame.origin.y
     }
     
     func keyboardWillHide(notification: NSNotification) {
         hideKeyboardButton.hidden = true
-        transferAreaTopConstraint.constant = 215
+        transferAreaTopConstraint.constant = transferInfoDefaultY
     }
     
     
