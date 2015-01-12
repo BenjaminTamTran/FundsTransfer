@@ -132,9 +132,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
     
     @IBAction func payNowAction(sender: AnyObject) {
-        println("[TransferAddRq: [TranferInfo: [DestAcctNo: \(accountNumberTextFiled.text), DestBankCode: \(selectedBankCode), Amt: \(amountTransferTxtField.text), TranType: I001]]]")
-        var param: Dictionary = ["TransferAddRq": ["TranferInfo": ["DestAcctNo": accountNumberTextFiled.text, "DestBankCode": selectedBankCode, "Amt": amountTransferTxtField.text, "TranType": "I001"]]]
-//        {"TransferAddRq" : { "TranferInfo" : { "DestAcctNo" : "1020028960", "DestBankCode" : "950", "Amt" : 3699,"TranType" : "I001"} } }
+        var param: Dictionary<String,AnyObject> = ["DestAcctNo": accountNumberTextFiled.text, "Amt": amountTransferTxtField.text, "DestBankCode": selectedBankCode, "TranType": "I001"]
         networkAdapter.callWSWithMethodPost(initTransferAction, parameters: param) { (response: HTTPResponse?, error: NSError?) -> Void in
             if response?.responseObject != nil {
                 var jsonDic = NSJSONSerialization.JSONObjectWithData(response!.responseObject as NSData, options: .MutableLeaves, error: nil) as NSDictionary
@@ -210,6 +208,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         
         bankListTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: bankCellIdentifier)
         accountNumberTextFiled.text = "1020028960"
+        amountTransferTxtField.text = "9000"
     }
     
     func localize() {

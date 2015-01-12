@@ -58,9 +58,9 @@ class NetworkAdapter: NSObject {
         var request = HTTPTask()
         addIndicator()
         request.POST(url, parameters: parameters, success: {(response: HTTPResponse?) -> Void in
-            println("response.statusCode \(response?.statusCode)")
-            var str = NSString(data: response?.responseObject as NSData, encoding: NSUTF8StringEncoding)
-            println("\(str)")
+//            println("response.statusCode \(response?.statusCode)")
+//            var str = NSString(data: response?.responseObject as NSData, encoding: NSUTF8StringEncoding)
+//            println("\(str)")
             self.removeIndicator()
             if response != nil {
                 if response?.statusCode != nil {

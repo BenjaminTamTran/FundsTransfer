@@ -117,10 +117,15 @@ public class HTTPRequestSerializer: NSObject {
             request.URL = NSURL(string: newUrl)
         } else {
             var charset = CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.stringEncoding));
-            if request.valueForHTTPHeaderField(contentTypeKey) == nil {
-                request.setValue("application/x-www-form-urlencoded; charset=\(charset)",
-                    forHTTPHeaderField:contentTypeKey)
-            }
+//            if request.valueForHTTPHeaderField(contentTypeKey) == nil {
+//                request.setValue("application/json",
+//                    forHTTPHeaderField:contentTypeKey)
+//            }
+            request.setValue("application/json", forHTTPHeaderField:contentTypeKey)
+            var param: Dictionary<String,AnyObject> = parameters!
+            var destAcctNo = param["DestAcctNo"] as String
+            var amt = param["Amt"] as String
+            queryString = "{\"TransferAddRq\": {\"TransferInfo\": {\"DestAcctNo\": \"\(destAcctNo)\", \"DestBankCode\": \"950\", \"Amt\": \"\(amt)\", \"TranType\": \"I001\"} } }"
             request.HTTPBody = queryString.dataUsingEncoding(self.stringEncoding)
         }
         return (request,nil)
